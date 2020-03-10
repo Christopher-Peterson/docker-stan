@@ -8,14 +8,15 @@ MAINTAINER Christopher Peterson Christopher.R.Peterson@gmail.com
 # Install clang to use as compiler
 # clang seems to be more memory efficient with the templates than g++
 # with g++ rstan cannot compile on docker hub due to memory issues
-# Also install V8, a new dependency for rstan
+# Also install V8 & TBB, new dependencies for rstan
 RUN apt-get update \ 
 	&& apt-get install -y --no-install-recommends \
-                   clang-3.6 \
-		   libv8-dev
+                   clang-6.0 \
+		               libv8-dev \
+		               libtbb-dev
 
-RUN ln -s /usr/bin/clang++-3.6 /usr/bin/clang++ \
-    && ln -s /usr/bin/clang-3.6 /usr/bin/clang
+RUN ln -s /usr/bin/clang++-6.0 /usr/bin/clang++ \
+    && ln -s /usr/bin/clang-6.0 /usr/bin/clang
 
 # Global site-wide config
 RUN mkdir -p $HOME/.R/ \
