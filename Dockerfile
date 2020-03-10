@@ -20,9 +20,13 @@ RUN apt-get update \
 #    && echo "CC=clang\n" >> $HOME/.R/Makevars
     
 # Install rstan dependencies
-RUN install2.r --error --deps TRUE\
+RUN install2.r --error \
     inline \
+    Rcpp \
     RcppEigen \
+    KernSmooth \
+    BH \
+    RcppParallel \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
 # Install up-to-date version of rstan
