@@ -36,7 +36,7 @@ RUN install2.r --error --deps TRUE\
 RUN Rscript -e 'install.packages("https://cran.r-project.org/src/contrib/Archive/StanHeaders/StanHeaders_2.21.0-1.tar.gz", repos = NULL); remotes::install_github("stan-dev/rstan", ref = "develop", subdir = "rstan/rstan")'
 
 # Install other stan packages
-RUN install2.r --error --deps TRUE \
+RUN install2.r --error\
   loo \
   bayesplot \
   rstanarm \
